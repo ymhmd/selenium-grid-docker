@@ -13,7 +13,6 @@ public class ExtentReportManager implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        System.out.println("The name of the testcase passed is :" + result.getName());
         ITestContext context = result.getTestContext();
         ExtentTest extentTest = (ExtentTest) context.getAttribute("test");
         String testName = (String) context.getAttribute("testName");
@@ -27,7 +26,6 @@ public class ExtentReportManager implements ITestListener {
         ExtentTest extentTest = (ExtentTest) context.getAttribute("test");
         String testName = (String) context.getAttribute("testName");
         ExtentReportScreenshot extentReportScreenshot = new ExtentReportScreenshot();
-        System.out.println("The name of the testcase failed is :" + result.getName());
         try {
             extentTest.log(LogStatus.FAIL, extentTest.addScreenCapture(extentReportScreenshot.captureScreenshot(driver)) + testName);
         } catch (IOException e) {
